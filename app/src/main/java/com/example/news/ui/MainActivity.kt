@@ -13,11 +13,22 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         WindowCompat.setDecorFitsSystemWindows(window, false)
+
+        val appContainer = (application as NewsApplication).container
+        setContent {
+            val widthSizeClass = calculateWindowSizeClass(this).widthSizeClass
+            NewsApp(appContainer, widthSizeClass)
+        }
+    }
+    /*@OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        WindowCompat.setDecorFitsSystemWindows(window, false)
         val appContainer = (application as NewsApplication).container
 
         setContent {
             val widthSizeClass = calculateWindowSizeClass(this).widthSizeClass
             NewsApp(appContainer, widthSizeClass)
         }
-    }
+    }*/
 }

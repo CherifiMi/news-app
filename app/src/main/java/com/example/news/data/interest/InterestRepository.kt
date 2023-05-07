@@ -1,6 +1,7 @@
 package com.example.news.data.interest
 
 import kotlinx.coroutines.flow.Flow
+import com.example.news.data.posts.Result
 
 data class InterestSection(
     val title: String,
