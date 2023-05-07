@@ -1,14 +1,12 @@
 package com.example.news.ui
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
 import com.example.news.data.AppContainer
 import com.example.news.theme.NewsTheme
 
@@ -19,10 +17,26 @@ fun NewsApp(
     widthSizeClass: WindowWidthSizeClass
 ) {
     NewsTheme() {
-        Surface() {
-            Column(Modifier.fillMaxSize().background(Color.Blue)) {
-                Text(text = "hillo")
+        val navController = rememberNavController()
+        val navigationActions = remember(navController) {
+            NewsNavigationActions(navController)
+        }
+        val coroutineScope = rememberCoroutineScope()
+        val navBackStackEntry by navController.currentBackStackEntryAsState()
+        val currentRoute =
+            navBackStackEntry?.destination?.route ?: NewsDestinations.HOME_ROUTE
+        val isExpandedScreen = widthSizeClass == WindowWidthSizeClass.Expanded
+        val sizeAwareDrawerState = rememberSizeAwareDrawerState(isExpandedScreen)
+
+        ModelNaviagtionDrawer(
+            drawerContent = {
+                AppDrawer(
+                    currentRoute = currentRoute,
+                    navigateToHome = navigationActions.navigateToHome
+                )
             }
+        ){
+
         }
     }
 }
