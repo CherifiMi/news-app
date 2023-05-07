@@ -1,4 +1,4 @@
-package com.example.news.data
+package com.example.news.model
 
 import androidx.annotation.DrawableRes
 
@@ -11,12 +11,12 @@ data class Post(
     val metadata: Metadata,
     val paragraphs: List<Paragraph> = emptyList(),
     @DrawableRes val imageId: Int,
-    @DrawableRes val imageThemId: Int,
+    @DrawableRes val imageThumbId: Int,
 )
 
 data class Metadata(
     val author: PostAuthor,
-    val data: String,
+    val date: String,
     val readTimeMinutes: Int
 )
 data class PostAuthor(

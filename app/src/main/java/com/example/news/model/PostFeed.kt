@@ -1,4 +1,4 @@
-package com.example.news.data
+package com.example.news.model
 
 data class PostFeed(
     val highlightedPost: Post,
