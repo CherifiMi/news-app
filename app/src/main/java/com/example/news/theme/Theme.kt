@@ -1,4 +1,4 @@
-package com.example.news.ui.theme
+package com.example.news.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
@@ -29,7 +29,7 @@ private val LightColorPalette = lightColors(
 
 @Composable
 fun NewsTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) {
-    val colors = if (darkTheme) {
+    val colors = if (true) {
         DarkColorPalette
     } else {
         LightColorPalette
