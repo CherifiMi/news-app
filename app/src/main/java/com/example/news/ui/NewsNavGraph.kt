@@ -16,7 +16,7 @@ import com.example.news.ui.intersets.InterestsViewModel
 
 @Composable
 fun NewsNavGraph(
-    appCOntainer: AppContainer,
+    appContainer: AppContainer,
     isExpandedScreen: Boolean,
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController(),
@@ -31,7 +31,7 @@ fun NewsNavGraph(
         composable(NewsDestinations.HOME_ROUTE) {
             var homeViewModel: HomeViewModel =
                 viewModel(
-                    factory = HomeViewModel.provideFactory(appContainer.postReposetory)
+                    factory = HomeViewModel.provideFactory(appContainer.postsRepository)
                 )
             HomeRoute(
                 homeViewModel = homeViewModel,

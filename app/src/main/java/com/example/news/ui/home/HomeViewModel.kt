@@ -56,18 +56,14 @@ class HomeViewModel(
         }
     }
 
-    /**
-     * Toggle favorite of a post
-     */
+
     fun toggleFavourite(postId: String) {
         viewModelScope.launch {
             postsRepository.toggleFavorite(postId)
         }
     }
 
-    /**
-     * Selects the given article to view more information about it.
-     */
+
     fun selectArticle(postId: String) {
         // Treat selecting a detail as simply interacting with it
         interactedWithArticleDetails(postId)
@@ -83,18 +79,12 @@ class HomeViewModel(
         }
     }
 
-    /**
-     * Notify that the user interacted with the feed
-     */
     fun interactedWithFeed() {
         viewModelState.update {
             it.copy(isArticleOpen = false)
         }
     }
 
-    /**
-     * Notify that the user interacted with the article details
-     */
     fun interactedWithArticleDetails(postId: String) {
         viewModelState.update {
             it.copy(
@@ -104,18 +94,12 @@ class HomeViewModel(
         }
     }
 
-    /**
-     * Notify that the user updated the search query
-     */
     fun onSearchInputChanged(searchInput: String) {
         viewModelState.update {
             it.copy(searchInput = searchInput)
         }
     }
 
-    /**
-     * Factory for HomeViewModel that takes PostsRepository as a dependency
-     */
     companion object {
         fun provideFactory(
             postsRepository: PostsRepository,
