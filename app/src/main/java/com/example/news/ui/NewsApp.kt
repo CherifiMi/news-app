@@ -37,8 +37,7 @@ fun NewsApp(
         }
         val coroutineScope = rememberCoroutineScope()
         val navBackStackEntry by navController.currentBackStackEntryAsState()
-        val currentRoute =
-            navBackStackEntry?.destination?.route ?: NewsDestinations.HOME_ROUTE
+        val currentRoute = navBackStackEntry?.destination?.route ?: NewsDestinations.HOME_ROUTE
         val isExpandedScreen = widthSizeClass == WindowWidthSizeClass.Expanded
         val sizeAwareDrawerState = rememberSizeAwareDrawerState(isExpandedScreen)
 
