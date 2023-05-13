@@ -2,6 +2,9 @@ package com.example.news.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.ListAlt
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -28,8 +31,16 @@ fun AppDrawer(
         )
         NavigationDrawerItem(
             label = { Text(stringResource(id = R.string.home_title)) },
+            icon = { Icon(Icons.Filled.Home, null )},
             selected = currentRoute == NewsDestinations.HOME_ROUTE,
             onClick = { navigateToHome();closeDrawer()},
+            modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
+        )
+        NavigationDrawerItem(
+            label = { Text(stringResource(id = R.string.interests_title)) },
+            icon = { Icon(Icons.Filled.ListAlt, null )},
+            selected = currentRoute == NewsDestinations.INTERESTS_ROUTE,
+            onClick = { navigateToIntrests();closeDrawer()},
             modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
         )
     }
