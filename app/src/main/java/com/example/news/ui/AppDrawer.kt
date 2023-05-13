@@ -2,18 +2,18 @@ package com.example.news.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.darkColorScheme
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.news.R
 import com.example.news.theme.NewsTheme
 
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AppDrawer(
     currentRoute: String,
@@ -22,15 +22,17 @@ fun AppDrawer(
     closeDrawer: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-
-    Column(
-        Modifier
-            .background(Color.Red)
-            .fillMaxSize()
-    ) {
-
+    ModalDrawerSheet(modifier) {
+        NewsLogo(
+            modifier = Modifier.padding(horizontal = 28.dp, vertical = 24.dp)
+        )
+        NavigationDrawerItem(
+            label = { Text(stringResource(id = R.string.home_title)) },
+            selected = currentRoute == NewsDestinations.HOME_ROUTE,
+            onClick = { navigateToHome();closeDrawer()},
+            modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
+        )
     }
-
 }
 
 @Composable
