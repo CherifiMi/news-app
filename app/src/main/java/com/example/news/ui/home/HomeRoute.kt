@@ -2,6 +2,7 @@ package com.example.news.ui.home
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -15,7 +16,7 @@ fun HomeRoute(
 ) {
 
 
-    Column(Modifier.background(Color.Blue)) {
+    Column(Modifier.background(Color.Blue).fillMaxSize()) {
 
     }
 }
