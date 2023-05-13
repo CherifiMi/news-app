@@ -14,10 +14,13 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.news.data.AppContainer
 import com.example.news.theme.NewsTheme
+import com.example.news.ui.components.AppNavRail
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 
@@ -50,12 +53,33 @@ fun NewsApp(
             }
         ) {
             Row {
-                if (isExpandedScreen){
-
+                if (isExpandedScreen) {
+                    AppNavRail(
+                        currentRoute = currentRoute,
+                        navigateToHome = navigationActions.navigateToHome,
+                        navigateToIntrests = navigationActions.navigateToInterests
+                    )
                 }
+                NewsNavGraph(
+                    appCOntainer = appContainer,
+                    isExpandedScreen = isExpandedScreen,
+                    navController = navController,
+                    openDrawer  = {coroutineScope.launch { sizeAwareDrawerState.open() }}
+                )
             }
         }
     }
+}
+
+@Composable
+fun NewsNavGraph(
+    appCOntainer: AppContainer,
+    isExpandedScreen: Boolean,
+    navController: NavHostController = rememberNavController(),
+    openDrawer: () -> Unit = {},
+    startingDestination : String = NewsDestinations.HOME_ROUTE
+) {
+    
 }
 
 
