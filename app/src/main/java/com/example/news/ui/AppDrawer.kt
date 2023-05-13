@@ -56,7 +56,7 @@ fun NewsLogo(modifier: Modifier = Modifier) {
         )
         Spacer(Modifier.width(8.dp))
         Icon(
-            painter = painterResource(id = R.drawable.ic_jetnews_logo),
+            painter = painterResource(id = R.drawable.ic_jetnews_wordmark),
             contentDescription = null,
             tint = MaterialTheme.colorScheme.onSurfaceVariant
         )
