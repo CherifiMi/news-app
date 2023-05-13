@@ -11,12 +11,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.news.data.AppContainer
 import com.example.news.theme.NewsTheme
+import kotlinx.coroutines.launch
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -41,14 +43,21 @@ fun NewsApp(
             drawerContent = {
                 AppDrawer(
                     currentRoute = currentRoute,
-                    navigateToHome = navigationActions.navigateToHome
+                    navigateToHome = navigationActions.navigateToHome,
+                    navigateToIntrests = navigationActions.navigateToInterests,
+                    closeDrawer = { coroutineScope.launch { sizeAwareDrawerState.close() } }
                 )
             }
-        ){
+        ) {
+            Row {
+                if (isExpandedScreen){
 
+                }
+            }
         }
     }
 }
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -56,13 +65,8 @@ private fun rememberSizeAwareDrawerState(isExpandedScreen: Boolean): DrawerState
     val drawerState = rememberDrawerState(DrawerValue.Closed)
 
     return if (!isExpandedScreen) {
-        // If we want to allow showing the drawer, we use a real, remembered drawer
-        // state defined above
         drawerState
     } else {
-        // If we don't want to allow the drawer to be shown, we provide a drawer state
-        // that is locked closed. This is intentionally not remembered, because we
-        // don't want to keep track of any changes and always keep it closed
         DrawerState(DrawerValue.Closed)
     }
 }
