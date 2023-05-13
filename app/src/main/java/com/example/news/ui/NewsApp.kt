@@ -60,7 +60,7 @@ fun NewsApp(
                     )
                 }
                 NewsNavGraph(
-                    appCOntainer = appContainer,
+                    appContainer = appContainer,
                     isExpandedScreen = isExpandedScreen,
                     navController = navController,
                     openDrawer  = {coroutineScope.launch { sizeAwareDrawerState.open() }}
