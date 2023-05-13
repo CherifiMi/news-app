@@ -71,17 +71,6 @@ fun NewsApp(
     }
 }
 
-@Composable
-fun NewsNavGraph(
-    appCOntainer: AppContainer,
-    isExpandedScreen: Boolean,
-    navController: NavHostController = rememberNavController(),
-    openDrawer: () -> Unit = {},
-    startingDestination : String = NewsDestinations.HOME_ROUTE
-) {
-    
-}
-
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
